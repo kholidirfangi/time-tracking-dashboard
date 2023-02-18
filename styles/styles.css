@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+
+html {
+  font-family: 'Rubik', sans-serif;
+  /* color */
+
+  --owner-bg: hsl(246, 80%, 60%);
+
+  --work-bg: hsl(15, 100%, 70%);
+  --play-bg: hsl(195, 74%, 62%);
+  --study-bg: hsl(348, 100%, 68%);
+  --exercise-bg: hsl(145, 58%, 55%);
+  --social-bg: hsl(264, 64%, 52%);
+  --self-care-bg: hsl(43, 84%, 65%);
+
+  --body-bg: hsl(226, 43%, 10%);
+  --card-info-bg: hsl(235, 46%, 20%);
+  --dark-text: hsl(235, 45%, 61%);
+  --light-text: hsl(236, 100%, 87%);
+
+  /* font-size */
+
+  --titles: 18px;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--body-bg);
+  padding: 8.1rem 2.4rem;
+}
+
+section.activity-tracker {
+  width: 100%;
+  display: grid;
+  height: auto;
+  grid-auto-rows: max-content;
+  grid-template-column: 1fr;
+  justify-items: center;
+  gap: 2.4rem;
+}
+
+section.activity-tracker__menu {
+  width: 100%;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: var(--card-info-bg);
+}
+
+.activity-tracker__owner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 3.1rem 2.9rem;
+  gap: 2rem;
+  border-radius: 1.5rem;
+  background: var(--owner-bg);
+}
+
+.activity-tracker__owner img {
+  width: 6.4rem;
+  border: 0.3rem solid white;
+  border-radius: 50%;
+}
+
+.activity-tracker__owner-container {
+  gap: 0.4rem;
+}
+
+.activity-tracker__owner-for {
+  color: var(--light-text);
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+}
+.activity-tracker__owner-name {
+  font-size: clamp(2.4rem, 1.8366rem + 1.5023vw, 4rem);
+  color: white;
+  font-weight: 300;
+}
+
+.activity-tracker__options {
+  display: flex;
+  padding: 2.4rem 2rem 2.5rem 3.3rem;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.activity-tracker__option {
+  color: var(--dark-text);
+  transition: color 250ms;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* 
+      .activity-tracker__option:hover, 
+      .activity-tracker__option.active {
+          color: white;
+      } */
+
+.activity-tracker__option:is(:hover, .active) {
+  color: white;
+}
+
+section.activity-tracker__activity {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 3.8rem 1fr;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+  border-radius: 1.5rem;
+}
+
+.activity-tracker__activity:is(.work) {
+  --background: var(--work-bg);
+}
+
+.activity-tracker__activity:is(.play) {
+  --background: var(--play-bg);
+}
+
+.activity-tracker__activity:is(.study) {
+  --background: var(--study-bg);
+}
+
+.activity-tracker__activity:is(.exercise) {
+  --background: var(--exercise-bg);
+}
+
+.activity-tracker__activity:is(.social) {
+  --background: var(--social-bg);
+}
+
+.activity-tracker__activity:is(.self-care) {
+  --background: var(--self-care-bg);
+}
+
+.activity-bg {
+  display: grid;
+  grid-row: 1/3;
+  grid-column: 1/2;
+  place-items: start end;
+  background: var(--background);
+  height: 70%;
+}
+
+.activity-bg > img {
+  position: relative;
+  transform: translate(-2rem, -1rem);
+  z-index: 1;
+}
+
+.activity-info {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  grid-row: 2/3;
+  grid-column: 1/2;
+  gap: 0.6rem;
+  background: var(--card-info-bg);
+  z-index: 2;
+  border-radius: 1.5rem 1.5rem 0 0;
+  padding: 2.8rem 2.4rem;
+  cursor: pointer;
+}
+
+.activity-tracker__activity:hover .activity-info {
+  background: hsl(236, 41%, 34%);
+}
+
+.activity-header,
+.activity-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+}
+
+.activity-name {
+  color: white;
+  font-weight: 500;
+}
+
+.activity-options {
+  transition: white 250ms;
+}
+
+.activity-options:hover > svg path {
+  fill: white;
+}
+
+.current {
+  font-size: clamp(3.2rem, 2.3549rem + 2.2535vw, 5.6rem);
+  font-weight: 300;
+  line-height: 6.6rem;
+  color: white;
+}
+
+.previous {
+  font-size: 1.5rem;
+  color: var(--light-text);
+}
+
+@media screen and (min-width: 500px) {
+  section.activity-tracker {
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-template-rows: 1fr 1fr;
+    min-height: 51.8rem;
+    gap: 3rem;
+  }
+
+  section.activity-tracker__menu {
+    grid-row: 1/3;
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  div.activity-tracker__owner {
+    flex-flow: column nowrap;
+    padding: 3.4rem 2.9rem 8rem 2.9rem;
+    align-items: start;
+    gap: 4.3 rem;
+    flex: 1 0 auto;
+  }
+
+  .activity-tracker__owner img {
+    width: 7.8rem;
+  }
+
+  .activity-tracker__owner-container {
+    gap: 0.3rem;
+    max-width: 60%;
+  }
+
+  .activity-tracker__owner-name {
+    line-height: 4rem;
+  }
+
+  .activity-tracker__options {
+    flex-flow: column nowrap;
+    gap: 2.1rem;
+    padding: 2.6rem 3.2rem 3.2rem;
+  }
+
+  .activity-tracker__activity {
+    grid-template-rows: 4.5rem 1fr;
+  }
+
+  .activity-info {
+    gap: 2.4rem;
+    padding: 2.9rem 3rem 3.2rem;
+  }
+
+  .activity-content {
+    flex-flow: column nowrap;
+    align-items: start;
+    gap: 0.8rem;
+  }
+}
+
+@media screen and (min-width: 1110px) {
+  section.activity-tracker {
+    max-width: 111rem;
+  }
+}
